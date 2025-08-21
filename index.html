@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    informe a latitude: <input type="text" id="lati"/><br><br>
+    informe a altitude: <input type="text" id="alti"/><br><br>
+    <input type="button" value="ver temperatura" id="botao" onclick="mostrar()"><br><br>
+    temperatura: <input type="text" id="temp"/><br><br>
+
+    <script>
+        async function mostrar() {
+            var latitude = document.getElementById("lati")
+            var altitude = document.getElementById("alti")
+
+            var url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m1'
+            
+            var res = await fetch(url)
+            var json = await res.json()
+
+            temp.value = lati.value & alti.value ["latitude"]
+            
+            /*
+            var res = await fetch(url);
+            var json = await res.json();
+
+            real.value = dolar.value * json["USDBRL"]["bid"];*/
+        }
+    </script>
+</body>
+</html>

@@ -6,23 +6,26 @@
     <title>Document</title>
 </head>
 <body>
+    programa para ver temperatura de um local informando as coordenadas<br><br>
     informe a latitude: <input type="text" id="lati"/><br><br>
-    informe a altitude: <input type="text" id="alti"/><br><br>
+    informe a longitude: <input type="text" id="longi"/><br><br>
     <input type="button" value="ver temperatura" id="botao" onclick="mostrar()"><br><br>
     temperatura: <input type="text" id="temp"/><br><br>
 
     <script>
         async function mostrar() {
-            var latitude = document.getElementById("lati")
-            var altitude = document.getElementById("alti")
+            var latitude = document.getElementById("lati").value
+            var longitude = document.getElementById("longi").value
+            var temp = document.getElementById("temp")
 
-            var url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m1'
+            var url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=auto`;
             
             var res = await fetch(url)
             var json = await res.json()
 
-            temp.value = lati.value & alti.value ["latitude"]
-            
+            var tempAtual = json.current_weather.temperature
+
+            temp.value = tempAtual
             /*
             var res = await fetch(url);
             var json = await res.json();
